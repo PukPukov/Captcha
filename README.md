@@ -1,3 +1,5 @@
+Форк плагина Captcha (в оригинале у плагина не было мавен репозитория)
+
 # Captcha
 
 Captcha is a [spigot](https://www.spigotmc.org/) plugin which will prevent bots from ruining your server by giving them a challenge [captcha](https://nl.wikipedia.org/wiki/Captcha)
