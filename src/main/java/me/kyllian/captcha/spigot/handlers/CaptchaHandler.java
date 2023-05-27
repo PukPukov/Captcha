@@ -135,4 +135,5 @@ public class CaptchaHandler {
     public void execute(String command, Player player) {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName()));
     }
+    
 }
