@@ -7,6 +7,9 @@ import me.kyllian.captcha.spigot.listeners.login.LoginListener;
 import me.kyllian.captcha.spigot.listeners.login.PlayerJoinListener;
 import me.kyllian.captcha.spigot.map.MapHandlerFactory;
 import me.kyllian.captcha.spigot.utilities.SafeArea;
+
+import java.io.File;
+
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,7 +31,9 @@ public class CaptchaPlugin extends JavaPlugin {
 
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
-        if (getResource("background.png") == null) {
+        // Check if file exists in Captcha folder
+        if (!new File(getDataFolder(), "background.png").exists()) {
+            // If not, save it from jar
             saveResource("background.png", false);
         }
         captchaHandler = new CaptchaHandler(this);
@@ -61,8 +66,9 @@ public class CaptchaPlugin extends JavaPlugin {
         new PlayerInteractEntityListener(this);
         new PlayerInteractListener(this);
         new PlayerItemHeldListener(this);
-        if (Bukkit.getPluginManager().getPlugin("AuthMe") != null) new LoginListener(this);
-        else new PlayerJoinListener(this);
+        //if (Bukkit.getPluginManager().getPlugin("AuthMe") != null) new LoginListener(this);
+        //else new PlayerJoinListener(this);
+        new PlayerJoinListener(this);
         new PlayerMoveListener(this);
         new PlayerQuitListener(this);
         new PlayerRespawnListener(this);
