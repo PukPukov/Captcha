@@ -6,7 +6,7 @@
 
     <groupId>me.kyllian.captcha</groupId>
     <artifactId>Captcha</artifactId>
-    <version>1.22</version>
+    <version>1.22.1</version>
 
     <properties>
         <java.version>17</java.version>

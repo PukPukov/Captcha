@@ -1,6 +1,5 @@
 package me.kyllian.captcha.spigot.events;
 
-import lombok.Getter;
 import me.kyllian.captcha.spigot.captchas.Captcha;
 import me.kyllian.captcha.spigot.captchas.SolveState;
 import org.bukkit.entity.Player;
