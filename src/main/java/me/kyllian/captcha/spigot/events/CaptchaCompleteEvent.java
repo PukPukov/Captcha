@@ -1,15 +1,15 @@
 package me.kyllian.captcha.spigot.events;
 
+import lombok.Getter;
 import me.kyllian.captcha.spigot.captchas.Captcha;
 import me.kyllian.captcha.spigot.captchas.SolveState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
+import org.jetbrains.annotations.NotNull;
 
 public class CaptchaCompleteEvent extends PlayerEvent implements Cancellable {
-
-    private static final HandlerList HANDLER_LIST = new HandlerList();
 
     boolean cancelled = false;
 
@@ -50,8 +50,8 @@ public class CaptchaCompleteEvent extends PlayerEvent implements Cancellable {
         cancelled = b;
     }
 
-    @Override
-    public HandlerList getHandlers() {
-        return HANDLER_LIST;
-    }
+    private static final HandlerList handlers = new HandlerList();
+    public @NotNull HandlerList getHandlers() {return getHandlerList();}
+    public static @NotNull HandlerList getHandlerList() {return handlers;}
+    
 }

@@ -71,18 +71,16 @@ public class MapHandlerNew implements MapHandler {
     }
 
     public void sendMap(Player player, BufferedImage image) {
-        ItemStack map = mapsUsing.entrySet()
-                .stream()
-                .filter(mapValue -> !mapValue.getValue())
-                .findFirst()
-                .get()
-                .getKey();
+        ItemStack map = mapsUsing.entrySet().stream()
+            .filter(mapValue -> !mapValue.getValue())
+            .findFirst().orElseThrow()
+            .getKey();
 
         mapsUsing.put(map, true);
 
         MapMeta mapMeta = (MapMeta) map.getItemMeta();
-
-        MapView mapView = mapMeta.getMapView();
+        
+        MapView mapView = Bukkit.createMap(player.getWorld());
         mapView.getRenderers().clear();
 
         mapView.addRenderer(new MapRenderer() {
@@ -94,6 +92,7 @@ public class MapHandlerNew implements MapHandler {
                 rendered = true;
             }
         });
+        mapMeta.setMapView(mapView);
         map.setItemMeta(mapMeta);
         HandUtils.setItemInHand(player, map);
     }
